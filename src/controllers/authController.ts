@@ -20,6 +20,6 @@ export async function login(req: Request, res: Response) {
   const user = await UserService.authenticate(email, password);
   if (!user) return res.status(401).json({ error: 'Invalid credentials' });
   const token = issueToken({ id: user.id });
-  return res.json({ token });
+  return res.json({ token, user: { displayName: user.displayName, email: user.email }});
 }
 
