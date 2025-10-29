@@ -31,6 +31,11 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 
+console.log("********************")
+console.log(process.env)
+console.log(process.env.CORS_ORIGINS)
+
+
 
 app.get('/health', (_req, res) => {
   res.json({ ok: true });
