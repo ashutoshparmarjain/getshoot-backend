@@ -1,5 +1,9 @@
 # AI Studio Backend
 
+## Assignment DEMO
+
+URL: https://getshoot-frontend-178777845649.europe-west1.run.app
+
 Node.js and Express backend written in TypeScript. Includes authentication, validation, file uploads, and Google Cloud integrations.
 
 ## Requirements
