@@ -1,0 +1,10 @@
+node_modules
+dist
+.env
+.DS_Store
+coverage
+*.log
+prisma/dev.db
+prisma/dev.db-journal
+getshoot-key.json
+
