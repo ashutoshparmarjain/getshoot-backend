@@ -17,12 +17,15 @@ const allowedOrigins: string[] = process.env.CORS_ORIGINS
 
 app.use(cors({
   origin: (origin, callback) => {
+    console.log("***************");
+    console.log("origin", origin)
+    console.log("allowedO", allowedOrigins)
     if (!origin) return callback(null, true);
     if (allowedOrigins.includes(origin)) return callback(null, true);
     return callback(new Error("Not allowed by CORS"));
   },
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
+  credentials: true,
+  optionsSuccessStatus: 200
 }));
 
 app.options("*", cors());
@@ -31,9 +34,9 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 
-console.log("********************")
 console.log(process.env)
 console.log(process.env.CORS_ORIGINS)
+console.log("********************")
 
 
 
