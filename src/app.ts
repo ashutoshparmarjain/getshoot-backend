@@ -24,10 +24,6 @@ app.options('*', cors({
 app.use(express.json());
 app.use(morgan('dev'));
 
-// Only log the specific variable needed, not the entire environment
-console.log("********************");
-console.log(`CORS_ORIGINS env: ${process.env.CORS_ORIGINS}`);
-console.log("********************");
 
 
 app.get('/health', (_req, res) => {

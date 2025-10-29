@@ -102,14 +102,6 @@ export class GenerationService {
     };
   }
 
-  static async runGeneration(generationId: string): Promise<void> {
-    // Simulate an AI call: create a tiny placeholder image buffer
-    const pngHeader = Buffer.from('89504e470d0a1a0a', 'hex');
-    const fakeImage = Buffer.concat([pngHeader]);
-    const url = await uploadBufferToGcs(fakeImage, 'result.png', 'image/png');
-    await prisma.generation.update({ where: { id: generationId }, data: { status: 'completed', resultUrl: url } });
-  }
-
   static async markFailed(generationId: string, error: string) {
     await prisma.generation.update({ where: { id: generationId }, data: { status: 'failed', error } });
   }
