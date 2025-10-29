@@ -2,9 +2,9 @@ import bcrypt from 'bcrypt';
 import prisma from '../config/prisma';
 
 export class UserService {
-  static async createUser(email: string, password: string) {
+  static async createUser(email: string, password: string, displayName: string) {
     const passwordHash = await bcrypt.hash(password, 10);
-    return prisma.user.create({ data: { email, passwordHash } });
+    return prisma.user.create({ data: { email, passwordHash, displayName } });
   }
 
   static async authenticate(email: string, password: string) {

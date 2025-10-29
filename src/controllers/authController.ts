@@ -5,9 +5,9 @@ import { getValidatedData } from '../middleware/validationMiddleware';
 import { RegisterInput, LoginInput } from '../utils/validation';
 
 export async function register(req: Request, res: Response) {
-  const { email, password } = getValidatedData<RegisterInput>(req);
+  const { email, password, displayName } = getValidatedData<RegisterInput>(req);
   try {
-    const user = await UserService.createUser(email, password);
+    const user = await UserService.createUser(email, password, displayName);
     return res.status(201).json({ id: user.id, email: user.email });
   } catch (e: any) {
     if (e.code === 'P2002') return res.status(409).json({ error: 'Email already registered' });
